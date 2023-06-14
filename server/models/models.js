@@ -19,3 +19,11 @@ const BasketDevice = sequelize.define('basketDevice', {
 });
 
 
+const Device = sequelize.define('device', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  name: { type: DataTypes.STRING, unique: true, allowNull: false },
+  rating: { type: DataTypes.INTEGER, defaultValue: 0 },
+  img: { type: DataTypes.STRING, allowNull: false },
+
+});
+
