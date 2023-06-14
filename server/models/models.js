@@ -18,3 +18,4 @@ const BasketDevice = sequelize.define('basketDevice', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 });
 
+
