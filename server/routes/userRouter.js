@@ -2,19 +2,12 @@
 
 const { Router } = require('express');
 const router = Router();
+const userController = require('../controllers/userController.js');
 
-router.post('/registration', (req, res) => {
-  res.send('Registration endpoint');
-});
+router.post('/registration', userController.registration);
 
-router.post('/login', (req, res) => {
+router.post('/login', userController.login);
 
-  res.send('Login endpoint');
-});
-
-router.get('/authorization', (req, res) => {
-
-  res.send('Authorization endpoint');
-});
+router.get('/authorization', userController.checkAuthorization);
 
 module.exports = router;
