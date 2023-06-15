@@ -1,5 +1,5 @@
 'use strict';
-
+const apiError = require('../errors/apiError');
 class UserController {
   async registration(req, res) {
 
@@ -9,8 +9,10 @@ class UserController {
 
   }
 
-  async checkAuthorization(req, res) {
-
+  async checkAuthorization(req, res, next) {
+    const { id } = req.query;
+    if (!id) return next(apiError.errorRequest('No id'));
+    res.json(id);
   }
 }
 
