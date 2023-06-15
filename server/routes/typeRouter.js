@@ -1,16 +1,11 @@
 'use strict';
 const { Router } = require('express');
 const router = Router();
+const typeController = require('../controllers/typeController');
 
 
-router.post('/', (req, res) => {
-  // Handle the logic for creating a new type
-  res.send('Create a new type');
-});
+router.post('/', typeController.create);
 
-router.get('/', (req, res) => {
-  // Handle the logic for retrieving all types
-  res.send('Get all types');
-});
+router.get('/', typeController.getAll);
 
 module.exports = router;
