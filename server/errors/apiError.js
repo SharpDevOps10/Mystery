@@ -1,9 +1,9 @@
 'use strict';
 
 class ApiError extends Error {
-  constructor(statusCode, message) {
+  constructor(status, message) {
     super();
-    this.statusCode = statusCode;
+    this.statusCode = status;
     this.message = message;
   }
 
@@ -18,6 +18,5 @@ class ApiError extends Error {
   static forbiddenRequest(message) {
     return new ApiError(403, message);
   }
-
 
 }
