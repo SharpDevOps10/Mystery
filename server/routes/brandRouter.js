@@ -2,15 +2,10 @@
 
 const { Router } = require('express');
 const router = Router();
+const brandController = require('../controllers/brandController');
 
-router.post('/', (req, res) => {
-  // Handle the logic for creating a new brand
-  res.send('Create a new brand');
-});
+router.post('/', brandController.create);
 
-router.get('/', (req, res) => {
-  // Handle the logic for retrieving all brands
-  res.send('Get all brands');
-});
+router.get('/', brandController.getAll);
 
 module.exports = router;
