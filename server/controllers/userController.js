@@ -42,10 +42,9 @@ class UserController {
     return res.json({ token });
   }
 
-  async checkAuthorization(req, res, next) {
-    const { id } = req.query;
-    if (!id) return next(apiError.errorRequest('No id'));
-    res.json(id);
+  async checkAuthorization(req, res) {
+    const token = generateJwt(req.user.id, req.user.email, req.user.role);
+    return res.json({ token });
   }
 }
 
