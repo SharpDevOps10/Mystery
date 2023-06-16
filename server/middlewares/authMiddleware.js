@@ -1,20 +1,20 @@
 'use strict';
 
 const jwt = require('jsonwebtoken');
-
-module.exports = function(req, res, next) {
+const authenticate = (req, res, next) => {
   if (req.method === 'OPTIONS') {
-    next();
+    return next();
   }
   try {
     const token = req.headers.authorization.split(' ')[1];
     if (!token) {
-      res.status(401).json({ message: 'User is not authorized' });
+      return res.status(401).json({ message: 'User is not authorized' });
     }
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
     req.user = decoded;
     next();
   } catch (error) {
-    res.status(401).json({ message: 'User is not authorized' });
+    return res.status(401).json({ message: 'User is not authorized' });
   }
 };
+module.exports = authenticate;
