@@ -1,15 +1,25 @@
 'use strict';
 
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
+import {authRoutes, publicRoutes} from "../routes";
+import {SHOP_ROUTE} from "../utils/constants";
 
 
 const AppRouter = () => {
+  const isAuth = false;
   return (
-    <div>
-      Basket
+    <Switch>
+      {isAuth && authRoutes.map(({path, Component}) =>
+        <Route key={path} path={path} component={Component} exact/>
+      )};
 
-    </div>
+      {publicRoutes.map(({path, Component}) =>
+        <Route key={path} path={path} component={Component} exact/>
+      )};
+
+      <Redirect to={SHOP_ROUTE}/>
+    </Switch>
   );
 };
 
