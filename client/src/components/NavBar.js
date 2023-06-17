@@ -2,17 +2,18 @@
 
 import React, {useContext} from 'react';
 import {Context} from "../index";
-import {Container, Nav, Navbar} from "react-bootstrap";
+import {Container, Nav, Navbar, NavLink} from "react-bootstrap";
+import {SHOP_ROUTE} from "../utils/constants";
 
 const NavBar = () => {
   const {user} = useContext(Context);
 
   return (
     <>
-      <br />
+      <br/>
       <Navbar bg="primary" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <NavLink style={{color: 'white'}} to={SHOP_ROUTE}>Adolf`s House</NavLink>
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#features">Features</Nav.Link>
