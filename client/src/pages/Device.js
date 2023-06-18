@@ -5,8 +5,7 @@ import React from 'react';
 const Device = () => {
   return (
     <div>
-      DEVICE
-
+      Device
     </div>
   );
 };

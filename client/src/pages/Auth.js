@@ -1,15 +1,15 @@
 'use strict';
 
 import React from 'react';
-import {Card, Container, Form} from "react-bootstrap";
+import { Button, Card, Container, Form } from "react-bootstrap";
 
 const Auth = () => {
   return (
     <Container
       className="d-flex justify-content-center align-items-center"
-      style={{height: window.innerHeight - 54}}
+      style={{ height: window.innerHeight - 54 }}
     >
-      <Card style={{width: 600}} className="p-5">
+      <Card style={{ width: 600 }} className="p-5">
         <h2 className="m-auto">
           Authorization
         </h2>
@@ -23,8 +23,12 @@ const Auth = () => {
             placeholder="Enter your password"
           />
         </Form>
+        <Button
+          className="mt-3 align-self-end"
+          variant={"outline-success"}>
+          Sign In
+        </Button>
       </Card>
-
     </Container>
   );
 };
