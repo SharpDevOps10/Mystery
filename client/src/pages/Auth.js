@@ -1,7 +1,8 @@
 'use strict';
 
 import React from 'react';
-import { Button, Card, Container, Form } from "react-bootstrap";
+import {Button, Card, Container, Form, NavLink, Row} from "react-bootstrap";
+import {REGISTRATION_ROUTE} from "../utils/constants";
 
 const Auth = () => {
   return (
@@ -23,11 +24,16 @@ const Auth = () => {
             placeholder="Enter your password"
           />
         </Form>
-        <Button
-          className="mt-3 align-self-end"
-          variant={"outline-success"}>
-          Sign In
-        </Button>
+        <Row>
+          <div>
+            There is no account? <NavLink to={REGISTRATION_ROUTE}>Please, authorize!</NavLink>
+          </div>
+          <Button
+            className="mt-3 align-self-end"
+            variant={"outline-success"}>
+            Sign In
+          </Button>
+        </Row>
       </Card>
     </Container>
   );
