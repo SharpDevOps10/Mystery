@@ -24,13 +24,11 @@ const Auth = () => {
             placeholder="Enter your password"
           />
         </Form>
-        <Row>
-          <div>
-            There is no account? <NavLink to={REGISTRATION_ROUTE}>Please, authorize!</NavLink>
+        <Row className="d-flex justify-content-between mt-3 pl-3">
+          <div style={{display: 'inline-flex'}}>
+            No account?<NavLink to={REGISTRATION_ROUTE}> Please, authorize!</NavLink>
           </div>
-          <Button
-            className="mt-3 align-self-end"
-            variant={"outline-success"}>
+          <Button variant={"outline-success"}>
             Sign In
           </Button>
         </Row>
