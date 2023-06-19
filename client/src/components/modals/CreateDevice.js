@@ -1,9 +1,21 @@
-import React, {useContext} from 'react';
-import {Button, Dropdown, Form, Modal} from "react-bootstrap";
+import React, {useContext, useState} from 'react';
+import {Button, Col, Dropdown, Form, Modal, Row} from "react-bootstrap";
 import {Context} from "../../index";
 
 const CreateDevice = ({show, onHide}) => {
+  const [info, setInfo] = useState([]);
   const {device} = useContext(Context);
+  const addProperty = () => {
+    setInfo([...info, {
+      title: '',
+      description: '',
+      number: Date.now()
+    }]);
+  };
+
+  const removeProperty = (number) => {
+    setInfo(info.filter((i) => i.number !== number));
+  };
   return (
     <Modal
       show={show}
@@ -50,6 +62,39 @@ const CreateDevice = ({show, onHide}) => {
             type="file"
           />
           <hr/>
+          <Button
+            variant="outline-dark"
+            onClick={addProperty}
+          >
+            Add new property
+          </Button>
+          {info.map((i) =>
+            <Row className="mt-4" key={i.number}>
+              <Col md={4}>
+                <Form.Control
+                  placeholder="Enter property`s name"
+
+                />
+              </Col>
+
+              <Col md={4}>
+                <Form.Control
+                  placeholder="Enter property`s description"
+                />
+              </Col>
+
+              <Col md={4}>
+                <Button
+                  variant={"outline-danger"}
+                  onClick={() => removeProperty(i.number)}
+                >
+                  Delete
+                </Button>
+              </Col>
+            </Row>
+          )
+
+          }
 
         </Form>
       </Modal.Body>
