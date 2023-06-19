@@ -1,7 +1,9 @@
-import React from 'react';
-import {Button, Form, Modal} from "react-bootstrap";
+import React, {useContext} from 'react';
+import {Button, Dropdown, Form, Modal} from "react-bootstrap";
+import {Context} from "../../index";
 
 const CreateDevice = ({show, onHide}) => {
+  const {device} = useContext(Context);
   return (
     <Modal
       show={show}
@@ -12,14 +14,43 @@ const CreateDevice = ({show, onHide}) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Upload new type
+          Add new device
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
+          <Dropdown className="mt-2 mb-2">
+            <Dropdown.Toggle>Choose type</Dropdown.Toggle>
+            <Dropdown.Menu>
+              {device.types.map((type) =>
+                <Dropdown.Item key={type.id}>{type.name}</Dropdown.Item>
+              )}
+            </Dropdown.Menu>
+          </Dropdown>
+
+          <Dropdown>
+            <Dropdown.Toggle>Choose brand</Dropdown.Toggle>
+            <Dropdown.Menu>
+              {device.types.map((brand) =>
+                <Dropdown.Item key={brand.id}>{brand.name}</Dropdown.Item>
+              )}
+            </Dropdown.Menu>
+          </Dropdown>
           <Form.Control
-            placeholder={"Upload the name of type"}
+            className="mt-3"
+            placeholder="Enter device`s name"
           />
+          <Form.Control
+            className="mt-3"
+            placeholder="Enter device`s price"
+            type="number"
+          />
+          <Form.Control
+            className="mt-3"
+            type="file"
+          />
+          <hr/>
+
         </Form>
       </Modal.Body>
       <Modal.Footer>
