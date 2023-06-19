@@ -1,12 +1,22 @@
 'use strict';
 
 import React from 'react';
+import {Col, Container} from "react-bootstrap";
 
 const Device = () => {
   return (
-    <div>
-      Device
-    </div>
+    <Container>
+      <Col md={4}>
+
+      </Col>
+      <Col md={4}>
+
+      </Col>
+      <Col md={4}>
+
+      </Col>
+
+    </Container>
   );
 };
 
