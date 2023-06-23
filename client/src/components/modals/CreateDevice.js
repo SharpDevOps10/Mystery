@@ -32,6 +32,14 @@ const CreateDevice = observer(({ show, onHide }) => {
     setInfo(info.filter((i) => i.number !== number));
   };
 
+  const changeInfo = (key, value, number) => {
+    setInfo(
+      info.map((i) => (i.number === number ? { ...i, [key]: value } : i))
+    );
+  };
+
+  const addDevice = () => {};
+
   const selectFile = (event) => {
     setFile(event.target.files[0]);
   };
@@ -96,11 +104,23 @@ const CreateDevice = observer(({ show, onHide }) => {
           {info.map((i) => (
             <Row className="mt-4" key={i.number}>
               <Col md={4}>
-                <Form.Control placeholder="Enter property`s name" />
+                <Form.Control
+                  value={i.title}
+                  onChange={(event) =>
+                    changeInfo('title', event.target.value, i.number)
+                  }
+                  placeholder="Enter property`s name"
+                />
               </Col>
 
               <Col md={4}>
-                <Form.Control placeholder="Enter property`s description" />
+                <Form.Control
+                  value={i.title}
+                  onChange={(event) =>
+                    changeInfo('description', event.target.value, i.number)
+                  }
+                  placeholder="Enter property`s description"
+                />
               </Col>
 
               <Col md={4}>
@@ -119,7 +139,7 @@ const CreateDevice = observer(({ show, onHide }) => {
         <Button variant={'outline-danger'} onClick={onHide}>
           Close
         </Button>
-        <Button variant={'outline-success'} onClick={onHide}>
+        <Button variant={'outline-success'} onClick={addDevice}>
           Upload
         </Button>
       </Modal.Footer>
