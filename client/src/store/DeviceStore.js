@@ -1,5 +1,5 @@
 'use strict';
-import {makeAutoObservable} from "mobx";
+import { makeAutoObservable } from 'mobx';
 
 export default class DeviceStore {
   constructor() {
@@ -76,3 +76,4 @@ export default class DeviceStore {
     return this._limit;
   }
 }
+

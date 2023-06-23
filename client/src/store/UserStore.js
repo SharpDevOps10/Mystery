@@ -1,6 +1,6 @@
 'use strict';
 
-import {makeAutoObservable} from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
 export default class UserStore {
   constructor() {

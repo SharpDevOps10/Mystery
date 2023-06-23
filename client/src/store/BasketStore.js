@@ -1,4 +1,4 @@
-import {makeAutoObservable} from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
 export default class BasketStore {
   constructor() {
@@ -18,3 +18,4 @@ export default class BasketStore {
     return this._devices;
   }
 }
+
