@@ -36,23 +36,28 @@ class DeviceController {
     limit = limit || 9;
     const offset = page * limit - limit;
     let devices;
-    if (!brandId && !typeId) {
-      devices = await Device.findAndCountAll({ limit, offset });
-    }
-    if (brandId && !typeId) {
-      devices = await Device.findAndCountAll({
-        where: { brandId }, limit, offset
-      });
-    }
-    if (!brandId && typeId) {
-      devices = await Device.findAndCountAll({
-        where: { typeId }, limit, offset
-      });
-    }
-    if (brandId && typeId) {
-      devices = await Device.findAndCountAll({
-        where: { typeId, brandId }, limit, offset
-      });
+    const conditions = [
+      {
+        condition: !brandId && !typeId,
+        query: { limit, offset }
+      },
+      {
+        condition: brandId && !typeId,
+        query: { where: { brandId }, limit, offset }
+      },
+      {
+        condition: !brandId && typeId,
+        query: { where: { typeId }, limit, offset }
+      },
+      {
+        condition: brandId && typeId,
+        query: { where: { typeId, brandId }, limit, offset }
+      }
+    ];
+    const matchingCondition = conditions.find(({ condition }) => condition);
+
+    if (matchingCondition) {
+      devices = await Device.findAndCountAll(matchingCondition.query);
     }
     return res.json(devices);
 
