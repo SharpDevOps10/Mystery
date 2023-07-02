@@ -7,7 +7,7 @@ const Range = ({ setRange, value, setValue }) => {
       <Form.Label>Оценить</Form.Label>
       <Form.Range
         value={value}
-        onChange={(event) => setValue(e.target.value)}
+        onChange={(event) => setValue(event.target.value)}
         min={0}
         max={5}
       />
