@@ -1,6 +1,6 @@
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import star from '../assets/black-star-transparent-3.png';
+import star from '../assets/smallStar.png';
 
 const BasketDeviceItem = ({ device }) => {
   return (
